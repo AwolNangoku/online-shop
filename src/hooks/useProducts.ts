@@ -1,16 +1,10 @@
-import useSWR from "swr";
-
-const { VITE_FAKE_STORE_BASE_URL } = import.meta.env;
+import { useGetProductsQuery } from "@/services/fakestore";
 
 export default function useProducts() {
-  const productKey = "/products";
-  const { data: products } = useSWR(productKey, async (url) => {
-    const response = await fetch(`${VITE_FAKE_STORE_BASE_URL}${url}`);
-    return response.json();
-  });
-
+  const { data: products, error, isLoading } = useGetProductsQuery();
   return {
     products,
-    isLoading: !products,
+    isLoading,
+    error,
   };
 }

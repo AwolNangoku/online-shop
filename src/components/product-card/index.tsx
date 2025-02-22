@@ -28,11 +28,14 @@ const ProductCard = ({
   const onAddToCart = () => dispatch(addItem({ id: productId, quantity: 1, price: product?.price || 0 }));
   const removeFromCart = () => dispatch(removeItem({ id: productId, quantity: 1, price: product?.price || 0 }))
 
-  return isLoading ? (
-    <VStack bg="gray.100" borderRadius="md" p={4}>
-      <Skeleton height="500px" width="300px" />
-    </VStack>
-  ) : (
+  if (isLoading) {
+    return (
+      <VStack bg="gray.100" borderRadius="md" p={4}>
+        <Skeleton height="500px" width="300px" />
+      </VStack>
+    )
+  }
+  return (
     <Card.Root bg="black" flexDir="column" overflow="hidden" maxW="sm" borderRadius="md" boxShadow="md">
       <Image
         src={product?.image}
