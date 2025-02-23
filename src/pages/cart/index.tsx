@@ -1,5 +1,5 @@
 import { routes } from "@/app-router/store-routes";
-import { CartNav, ProductCard } from "@/components";
+import { CartNav, Checkout, ProductCard } from "@/components";
 import { useAppSelector } from "@/redux/hooks";
 import { CartItem } from "@/types/cart-item";
 import { Box, Button, Grid, Spacer, VStack } from "@chakra-ui/react";
@@ -36,6 +36,10 @@ const Cart = () => {
                 ))}
               </Grid>
             )}
+
+            {cartTotal > 0 ? (
+              <Checkout orderAmount={cartTotal} />
+            ) : null}
         </VStack>
       </Box>
     </Box>
