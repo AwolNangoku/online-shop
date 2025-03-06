@@ -1,10 +1,10 @@
 import { Suspense } from "react"
 import { BrowserRouter, useRoutes } from "react-router"
 
-import { Typography } from "@mui/material"
 import { storeRoutes } from "./store-routes"
 import StoreRoute from "./store-route"
 import NotFound from "@/pages/not-found"
+import { Text } from "@chakra-ui/react"
 
 const AppNavigation = () =>
   useRoutes([
@@ -21,7 +21,7 @@ const AppNavigation = () =>
 const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={(<Typography>Loading page...</Typography>)}>
+      <Suspense fallback={(<Text>Loading page...</Text>)}>
         <AppNavigation />
       </Suspense>
     </BrowserRouter>
