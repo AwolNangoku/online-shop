@@ -1,5 +1,4 @@
 node_modules
-src/components/ui
 .DS_Store
 .env
 dist
