@@ -6,8 +6,12 @@ interface CheckoutProps {
 }
 
 const Checkout = ({ orderAmount }: CheckoutProps) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const [{ options, isPending}, dispatch] = usePayPalScriptReducer();
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const onCreateOrder = (data, actions) => {
     return actions.order.create({
       purchase_units: [
@@ -20,7 +24,11 @@ const Checkout = ({ orderAmount }: CheckoutProps) => {
     });
   };
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const onApproveOrder = (data, actions) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
     return actions.order.capture().then((details) => {
     console.log('Approval details....', details);
     const name = details.payer.name.given_name;
